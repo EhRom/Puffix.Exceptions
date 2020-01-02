@@ -24,17 +24,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Samples\SampleException.Designer.cs">
+    <Compile Update="Samples\SampleExceptions.cs">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Compile>
+    <Compile Update="Samples\SampleExceptionsResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>SampleException.resx</DependentUpon>
+      <DependentUpon>SampleExceptionsResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Samples\SampleException.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SampleException.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Samples\SampleExceptionsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SampleExceptionsResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -7,10 +7,10 @@ using System.Runtime.Serialization;
 namespace Puffix.Exceptions
 {
     /// <summary>
-    /// Classe de base pour les gestions des exceptions dans les applications .Net.
+    /// Base class for exception managment in .Net applications.
     /// </summary>
-    /// <remarks>Cette classe doit être étendue. Elle permet de rechercher automatiquement des messages d'erreur 
-    /// dans des fichiers de ressources embarqués dans des librairies, en fonction du type de l'erreur de base.</remarks>
+    /// <remarks>This class is extended i your own code. This class loads automatically the error message pattern from the full exception class name, and build the error message
+    /// with the provided parameters. Error message patterns are stored in en embedded resource file (RexX file).</remarks>
     [Serializable]
     public abstract class BaseException : ApplicationException
     {

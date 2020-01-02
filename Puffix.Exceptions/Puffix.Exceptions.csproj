@@ -2,11 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Description>Manage your exceptions with a base class and automatic log.</Description>
+    <Description>Manage and organize your exceptions with a base class. The base class provides mechanisms for automatic logs.</Description>
     <Company>Puffix - Romain Ehret</Company>
     <Copyright>Copyright 2020 (c) Puffix / Romain Ehret. All rights reserved.</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>Exceptions .Net Core</PackageProjectUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Key.pfx</AssemblyOriginatorKeyFile>
+    <Authors>Puffix - Romain Ehret</Authors>
+    <PackageIcon></PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   <ItemGroup>

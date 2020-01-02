@@ -59,5 +59,50 @@ namespace Puffix.Exceptions {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FATAL - Puffix.Exceptions : Message unavailable. Exception type: {0}..
+        /// </summary>
+        internal static string DefaultMessagePattern {
+            get {
+                return ResourceManager.GetString("DefaultMessagePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: {0}. Pattern: {1}..
+        /// </summary>
+        internal static string InvalidMessagePattern {
+            get {
+                return ResourceManager.GetString("InvalidMessagePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FATAL - Puffix.Exceptions : The resources container is not valid..
+        /// </summary>
+        internal static string InvalidResourcesException {
+            get {
+                return ResourceManager.GetString("InvalidResourcesException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FATAL - Puffix.Exceptions : The resource manager &apos;{0}&apos; has not been found..
+        /// </summary>
+        internal static string UnavailableResourceManagerPattern {
+            get {
+                return ResourceManager.GetString("UnavailableResourceManagerPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FATAL - Puffix.Exceptions : The exception type is not known, the exception can not be handled..
+        /// </summary>
+        internal static string UnknownExceptionTypeMessage {
+            get {
+                return ResourceManager.GetString("UnknownExceptionTypeMessage", resourceCulture);
+            }
+        }
     }
 }

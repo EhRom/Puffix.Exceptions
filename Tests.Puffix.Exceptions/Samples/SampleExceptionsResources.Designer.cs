@@ -22,24 +22,24 @@ namespace Tests.Puffix.Exceptions.Samples {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SampleException {
+    public class SampleExceptionsResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SampleException() {
+        internal SampleExceptionsResources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tests.Puffix.Exceptions.Samples.SampleException", typeof(SampleException).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tests.Puffix.Exceptions.Samples.SampleExceptionsResources", typeof(SampleExceptionsResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,12 +51,30 @@ namespace Tests.Puffix.Exceptions.Samples {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while checking the provided value (&apos;{0}&apos;)..
+        /// </summary>
+        public static string CheckProvidedValueException {
+            get {
+                return ResourceManager.GetString("CheckProvidedValueException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value (&apos;{0}&apos;) is not the one expected (&apos;{1}&apos;)..
+        /// </summary>
+        public static string InvalidValueException {
+            get {
+                return ResourceManager.GetString("InvalidValueException", resourceCulture);
             }
         }
     }

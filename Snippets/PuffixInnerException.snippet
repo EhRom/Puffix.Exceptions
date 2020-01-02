@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>PuffixInnerException</Title>
+			<Shortcut>PuffixInnerException</Shortcut>
+			<Description>Code snippet for exception (Puffix.Exceptions nuget package)</Description>
+			<Author>Puffix - Romain Ehret</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>newException</ID>
+					<ToolTip>Name of your exception</ToolTip>
+					<Default>My</Default>
+				</Literal>
+				<Literal>
+					<ID>description</ID>
+					<ToolTip>Description of the exception</ToolTip>
+					<Default>description</Default>
+				</Literal>
+				<Literal>
+					<ID>BaseException</ID>
+					<ToolTip>Name of your base exception</ToolTip>
+					<Default>BaseException</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[/// <summary>
+    /// Error while $description$.
+    /// </summary>
+    [Serializable]
+    public sealed class $newException$Exception : $BaseException$Exceptions
+    {
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+		/// <param name="innerException">Inner error.</param>
+        public $newException$Exception(Exception innerException)
+            : base(typeof($newException$Exception), innerException)
+        { }
+		
+		#region Exception serialization.
+		
+		/// <summary>
+        /// Constructor for the serialization (DO NOT MODIFY).
+        /// </summary>
+        /// <param name="info">Serialization information.</param>
+        /// <param name="context">Context.</param>
+        public $newException$Exception(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+		
+		#endregion
+    }]]></Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

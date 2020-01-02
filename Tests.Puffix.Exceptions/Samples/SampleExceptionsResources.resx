@@ -117,19 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DefaultMessagePattern" xml:space="preserve">
-    <value>FATAL - Puffix.Exceptions : Message unavailable. Exception type: {0}.</value>
+  <data name="CheckProvidedValueException" xml:space="preserve">
+    <value>An error occured while checking the provided value ('{0}').</value>
   </data>
-  <data name="InvalidMessagePattern" xml:space="preserve">
-    <value>FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: {0}. Pattern: {1}.</value>
-  </data>
-  <data name="InvalidResourcesException" xml:space="preserve">
-    <value>FATAL - Puffix.Exceptions : The resources container is not valid.</value>
-  </data>
-  <data name="UnavailableResourceManagerPattern" xml:space="preserve">
-    <value>FATAL - Puffix.Exceptions : The resource manager '{0}' has not been found.</value>
-  </data>
-  <data name="UnknownExceptionTypeMessage" xml:space="preserve">
-    <value>FATAL - Puffix.Exceptions : The exception type is not known, the exception can not be handled.</value>
+  <data name="InvalidValueException" xml:space="preserve">
+    <value>The provided value ('{0}') is not the one expected ('{1}').</value>
   </data>
 </root>
