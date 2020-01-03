@@ -39,7 +39,6 @@ namespace $rootnamespace$
         { }
 		
 		#region Exception serialization.
-		
 		/// <summary>
         /// Constructor for the serialization (DO NOT MODIFY).
         /// </summary>
@@ -48,7 +47,6 @@ namespace $rootnamespace$
         protected $fileinputname$Exceptions(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }
-		
 		#endregion
     }
 }
