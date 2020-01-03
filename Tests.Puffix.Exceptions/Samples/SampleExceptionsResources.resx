@@ -120,7 +120,19 @@
   <data name="CheckProvidedValueException" xml:space="preserve">
     <value>An error occured while checking the provided value ('{0}').</value>
   </data>
+  <data name="InvalidPatternException" xml:space="preserve">
+    <value>The provided value ('{0') is not valid.</value>
+  </data>
+  <data name="InvalidPatternOuterException" xml:space="preserve">
+    <value>The provided value ('{0') is not valid.</value>
+  </data>
   <data name="InvalidValueException" xml:space="preserve">
+    <value>The provided value ('{0}') is not the one expected ('{1}').</value>
+  </data>
+  <data name="MissingParameterException" xml:space="preserve">
+    <value>The provided value ('{0}') is not the one expected ('{1}').</value>
+  </data>
+  <data name="MissingParameterOuterException" xml:space="preserve">
     <value>The provided value ('{0}') is not the one expected ('{1}').</value>
   </data>
 </root>

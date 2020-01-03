@@ -2,8 +2,8 @@
 <CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
 	<CodeSnippet Format="1.0.0">
 		<Header>
-			<Title>PuffixInnerException</Title>
-			<Shortcut>PuffixInnerException</Shortcut>
+			<Title>PuffixOuterException</Title>
+			<Shortcut>PuffixOuterException</Shortcut>
 			<Description>Code snippet for exception (Puffix.Exceptions nuget package)</Description>
 			<Author>Puffix - Romain Ehret</Author>
 			<SnippetTypes>
@@ -15,7 +15,7 @@
 				<Literal>
 					<ID>newException</ID>
 					<ToolTip>Name of your exception</ToolTip>
-					<Default>My</Default>
+					<Default>MyOuter</Default>
 				</Literal>
 				<Literal>
 					<ID>description</ID>
@@ -37,14 +37,13 @@
         /// <summary>
         /// Constructor.
         /// </summary>
-		/// <param name="innerException">Inner error.</param>
+				/// <param name="innerException">Inner error.</param>
         public $newException$Exception(Exception innerException)
             : base(typeof($newException$Exception), innerException)
         { }
 		
-		#region Exception serialization.
-		
-		/// <summary>
+				#region Exception serialization.
+				/// <summary>
         /// Constructor for the serialization (DO NOT MODIFY).
         /// </summary>
         /// <param name="info">Serialization information.</param>
@@ -52,8 +51,7 @@
         public $newException$Exception(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }
-		
-		#endregion
+				#endregion
     }]]></Code>
 		</Snippet>
 	</CodeSnippet>

@@ -15,26 +15,30 @@ namespace Puffix.Exceptions
     public abstract class BaseException : ApplicationException
     {
         /// <summary>
-        /// Nom de ressource utilisé pour vérifier la validité du Resource Manager.
+        /// Fake resource name to check if the Resource Manager is valid.
         /// </summary>
         private const string RESOURCE_NAME_CHECKER = "ResourceAvailabilityChecker";
 
+        #region Exception serialization.
+
         /// <summary>
-        /// Constructeur pour la sérialisation (technique, NE PAS MODIFIER).
+        /// Constructor for the serialization (DO NOT MODIFY).
         /// </summary>
-        /// <param name="info">Informations de sérialisation.</param>
-        /// <param name="context">Contexte.</param>
+        /// <param name="info">Serialization information.</param>
+        /// <param name="context">Context.</param>
         protected BaseException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }
 
+        #endregion
+
         /// <summary>
-        /// Constructeur.
+        /// Constructor.
         /// </summary>
-        /// <param name="resourceManagerType">Type du conteneur de ressouces.</param>
-        /// <param name="exceptionType">Type de l'exception.</param>
-        /// <param name="logger">Logger.</param>
-        /// <param name="errorMessageArguments">Arguments pour le formattage du message d'erreur.</param>
+        /// <param name="resourceManagerType">Resource Manager type.</param>
+        /// <param name="exceptionType">Type of the exception.</param>
+        /// <param name="logger">Logger instance.</param>
+        /// <param name="errorMessageArguments">Arguments to build the error message.</param>
         protected BaseException(Type resourceManagerType, Type exceptionType, ILog logger, params object[] errorMessageArguments)
             : base(BuildErrorMessage(resourceManagerType, exceptionType, logger, errorMessageArguments))
         {
@@ -43,13 +47,13 @@ namespace Puffix.Exceptions
         }
 
         /// <summary>
-        /// Constructeur.
+        /// Constructor.
         /// </summary>
-        /// <param name="resourceManagerType">Type du conteneur de ressouces.</param>
-        /// <param name="exceptionType">Type de l'exception.</param>
-        /// <param name="logger">Logger.</param>
-        /// <param name="innerException">Erreur originelle.</param>
-        /// <param name="errorMessageArguments">Arguments pour le formattage du message d'erreur.</param>
+        /// <param name="resourceManagerType">Resource Manager type.</param>
+        /// <param name="exceptionType">Type of the exception.</param>
+        /// <param name="logger">Logger instance.</param>
+        /// <param name="innerException">Inner exception.</param>
+        /// <param name="errorMessageArguments">Arguments to build the error message.</param>
         protected BaseException(Type resourceManagerType, Type exceptionType, ILog logger, Exception innerException, params object[] errorMessageArguments)
             : base(BuildErrorMessage(resourceManagerType, exceptionType, logger, errorMessageArguments), innerException)
         {
@@ -58,64 +62,70 @@ namespace Puffix.Exceptions
         }
 
         /// <summary>
-        /// Construction du mesage d'erreur.
+        /// Build the error message..
         /// </summary>
-        /// <param name="resourceManagerType">Type du conteneur de ressouces.</param>
-        /// <param name="exceptionType">Type de l'exception.</param>
-        /// <param name="log">Logger.</param>
-        /// <param name="errorMessageArguments">Arguments pour le formattage du message d'erreur.</param>
+        /// <param name="resourceManagerType">Resource Manager type.</param>
+        /// <param name="exceptionType">Type of the exception.</param>
+        /// <param name="logger">Logger instance.</param>
+        /// <param name="errorMessageArguments">Arguments to build the error message.</param>
         /// <returns>Message d'erreur.</returns>
-        private static string BuildErrorMessage(Type resourceManagerType, Type exceptionType, ILog log, params object[] errorMessageArguments)
+        private static string BuildErrorMessage(Type resourceManagerType, Type exceptionType, ILog logger, params object[] errorMessageArguments)
         {
-            // Récupération de la culture de l'assembly.
+            // Get the assembly culture.
             CultureInfo neutralCulture = GetAssemblyCulture();
 
-            // Si le conteneur de ressources est nul, on renvoie une erreur car il s'agit d'un bug dans la définition de l'exception.
+            // Throw exception if the resource manager is not specified or if the exception type is not defined. It is a bug in the exception definition.
             if (resourceManagerType == null)
-                throw new ArgumentNullException(BuildFatalMessage(log, neutralCulture, "InvalidResourcesException"));
-
-            // Si le type d'exception est nul, on renvoie une erreur car il s'agit d'un bug dans la définition de l'exception.
+                throw new ArgumentNullException(BuildFatalMessage(logger, neutralCulture, "InvalidResourcesException"));
             if (exceptionType == null)
-                throw new ArgumentNullException(BuildFatalMessage(log, neutralCulture, "UnknownExceptionTypeMessage"));
+                throw new ArgumentNullException(BuildFatalMessage(logger, neutralCulture, "UnknownExceptionTypeMessage"));
 
-            // Recuperation du pattern dans les ressources.
+            // Get the error message pattern from the resources.
             string messagePattern;
             try
             {
                 messagePattern = GetMessagePatternFromRessources(resourceManagerType, exceptionType, neutralCulture);
             }
+            catch (MissingManifestResourceException)
+            {
+                // The Resource Manager is not available.
+                return BuildFatalMessage(logger, neutralCulture, "UnavailableResourceManagerPattern", resourceManagerType.FullName);
+            }
             catch (InvalidOperationException)
             {
-                // Le Resource Manager n'a pas pu être instancié.
-                return BuildFatalMessage(log, neutralCulture, "UnavailableResourceManagerPattern", resourceManagerType.FullName);
+                // The Resource Manager is not available.
+                return BuildFatalMessage(logger, neutralCulture, "UnavailableResourceManagerPattern", resourceManagerType.FullName);
             }
 
-            // On verifie si le pattern de message a été trouvé.
+            // Check if the error message pattern was found. If not, a default message is returned.
             if (string.IsNullOrEmpty(messagePattern))
-                return BuildFatalMessage(log, neutralCulture, "DefaultMessagePattern", exceptionType.FullName);
+                return BuildFatalMessage(logger, neutralCulture, "DefaultMessagePattern", exceptionType.FullName);
 
             try
             {
+                // Build the error message with the arguments.
                 return string.Format(messagePattern, errorMessageArguments);
             }
             catch (FormatException)
             {
-                return BuildFatalMessage(log, neutralCulture, "InvalidMessagePattern", exceptionType.FullName);
+                // Error while formatting the message. A default message is returned.
+                return BuildFatalMessage(logger, neutralCulture, "InvalidMessagePattern", exceptionType.FullName, messagePattern);
             }
         }
 
         /// <summary>
-        /// Récupération de la culture de la librairie.
+        /// Get the assembly culture.
         /// </summary>
-        /// <returns>Culture de la librairie courante.</returns>
+        /// <returns>Current assembly culture.</returns>
         private static CultureInfo GetAssemblyCulture()
         {
+            // Get the executing assembly.
             Assembly currentAssembly = Assembly.GetExecutingAssembly();
 
-            // Chargement de l'attribut NeutralResourcesLanguage.
+            // Load the NeutralResourcesLanguage attribute.
             var neutralCultureAttribute = currentAssembly.GetCustomAttribute<NeutralResourcesLanguageAttribute>();
 
-            // Extraction de la valeur.
+            // Extract the culture value.
             CultureInfo neutralCulture = null;
             if (neutralCultureAttribute != null)
                 neutralCulture = new CultureInfo(neutralCultureAttribute.CultureName);
@@ -124,26 +134,26 @@ namespace Puffix.Exceptions
         }
 
         /// <summary>
-        /// Contruction et log d'un message d'erreur.
+        /// Build and log fatal error message (when regular behavior enounters errors).
         /// </summary>
-        /// <param name="log">Log.</param>
-        /// <param name="neutralCulture">Culture de récupération des ressources.</param>
-        /// <param name="resourceName">Nom de la ressource.</param>
-        /// <param name="resourceParams">Paramètres pour la construction du message.</param>
+        /// <param name="logger">Logger instance.</param>
+        /// <param name="neutralCulture">Neutral culture to retrieve the ressources.</param>
+        /// <param name="resourceName">Resource name.</param>
+        /// <param name="resourceParams">Arguments to build the message.</param>
         /// <returns>Message construit.</returns>
-        private static string BuildFatalMessage(ILog log, CultureInfo neutralCulture, string resourceName, params object[] resourceParams)
+        private static string BuildFatalMessage(ILog logger, CultureInfo neutralCulture, string resourceName, params object[] resourceParams)
         {
-            // Récupération de la ressource dans les ressources du gestionnaire des exceptions.
+            // Get the resource (message pattern) in the BaseException resource manager.
             string resourceValue = neutralCulture == null ?
                 BaseExceptionResources.ResourceManager.GetString(resourceName) :
                 BaseExceptionResources.ResourceManager.GetString(resourceName, neutralCulture);
 
-            // Contruction du message si nécessaire.
+            // Build message if required.
             if (resourceValue != null && resourceParams != null && resourceParams.Length > 0)
                 resourceValue = string.Format(resourceValue, resourceParams);
 
-            // Log du message.
-            log.Fatal(resourceValue);
+            // Log message.
+            logger.Fatal(resourceValue);
 
             return resourceValue;
         }
@@ -151,17 +161,16 @@ namespace Puffix.Exceptions
         /// <summary>
         /// Recherche du pattern de message d'erreurs dans les ressources.
         /// </summary>
-        /// <param name="resourceManagerType">Type du conteneur de ressouces.</param>
-        /// <param name="currentCulture">Culture des ressources.</param>
-        /// <param name="exceptionType">Type de l'exception.</param>
-        /// <returns>Pattern du message d'erreur correspondant.</returns>
+        /// <param name="resourceManagerType">Resource Manager type.</param>
+        /// <param name="exceptionType">Type of the exception.</param>
+        /// <param name="currentCulture">Current culture.</param>
+        /// <returns>Message pattern mathcing with the error.</returns>
         private static string GetMessagePatternFromRessources(Type resourceManagerType, Type exceptionType, CultureInfo currentCulture)
         {
-            // Chargement du gestionnaire de ressources.
-            ResourceManager resourceManager = LoadExceptionResourceManager(resourceManagerType, currentCulture);
+            // Load resource manager.
+            ResourceManager resourceManager = new ResourceManager(resourceManagerType.FullName, resourceManagerType.Assembly);
 
-            // Recherche du message dans les ressources passées en paramètre, en fonction du type de l'erreur.
-            // Recherche intelligente : 2 cas, type simple, type complet.
+            // Looking for the message in the provided resource maanger. 2 mode are available : complete type name, short type name (class name).
             string resourceName = exceptionType.Name;
             string resourceValue = currentCulture == null ? resourceManager.GetString(resourceName) : resourceManager.GetString(resourceName, currentCulture);
             if (string.IsNullOrEmpty(resourceValue))
@@ -173,41 +182,39 @@ namespace Puffix.Exceptions
             return resourceValue;
         }
 
-        /// <summary>
-        /// Chargement du gestionnaire de ressource contenant les messages d'erreur.
-        /// </summary>
-        /// <remarks>Cette méthode est exposée pour faciliter le stockage et l'accès aux codes d'erreurs SOAP dans le fichier de ressources
-        /// associé à la classe d'exception.</remarks>
-        /// <param name="resourceManagerType">Type du conteneur de ressouces.</param>
-        /// <param name="currentCulture">Culture cournante.</param>
-        /// <returns>Gestionnaire de ressources contenant les ressources sur les exceptions.</returns>
-        private static ResourceManager LoadExceptionResourceManager(Type resourceManagerType, CultureInfo currentCulture)
-        {
-            // HACK : Instanciation d'un Resource Manager pour contrôler le nom complet du type de base. Pour les fichiers associés aux 
-            // classes d'exception il faut suffixer le nom par Base (nom du type de l'exception de base), sinon les ressources ne sont pas 
-            // accessibles. Comme les ressources peuvent être externalisées dans un autre fichier, non associé à la classe d'exception de base, 
-            // on garde la possibilité d'instancier un Resource Manager sans le suffixer par base (dans les blocs 'catch').
-            ResourceManager resourceManager;
-            try
-            {
-                // On teste si le nom finit pas Base et on le rajoute si ce n'est pas le cas.
-                string resourceManagerTypeName = resourceManagerType.FullName;
-                resourceManager = new ResourceManager(resourceManagerTypeName, resourceManagerType.Assembly);
-                if (currentCulture == null)
-                    resourceManager.GetString(RESOURCE_NAME_CHECKER);
-                else
-                    resourceManager.GetString(RESOURCE_NAME_CHECKER, currentCulture);
-            }
-            catch (MissingManifestResourceException)
-            {
-                resourceManager = new ResourceManager(resourceManagerType.FullName, resourceManagerType.Assembly);
-            }
-            catch (InvalidOperationException)
-            {
-                resourceManager = new ResourceManager(resourceManagerType.FullName, resourceManagerType.Assembly);
-            }
+        /////// <summary>
+        /////// Load the resource manager containing the customized error message.
+        /////// </summary>
+        /////// <param name="resourceManagerType">Resource Manager type.</param>
+        /////// <param name="currentCulture">Current culture.</param>
+        /////// <returns>Reousrce manager containing error message pattenrs.</returns>
+        ////private static ResourceManager LoadExceptionResourceManager(Type resourceManagerType, CultureInfo currentCulture)
+        ////{
+        ////    // HACK: the resource manager is directly instanciated to keep control on the complete name of the base type. For files associated with exception classes container, the 
+        ////    // HACK : Instanciation d'un Resource Manager pour contrôler le nom complet du type de base. Pour les fichiers associés aux 
+        ////    // classes d'exception il faut suffixer le nom par Base (nom du type de l'exception de base), sinon les ressources ne sont pas 
+        ////    // accessibles. Comme les ressources peuvent être externalisées dans un autre fichier, non associé à la classe d'exception de base, 
+        ////    // on garde la possibilité d'instancier un Resource Manager sans le suffixer par base (dans les blocs 'catch').
+        ////    ResourceManager resourceManager;
+        ////    try
+        ////    {
+        ////        string resourceManagerTypeName = resourceManagerType.FullName;
+        ////        resourceManager = new ResourceManager(resourceManagerTypeName, resourceManagerType.Assembly);
+        ////        if (currentCulture == null)
+        ////            resourceManager.GetString(RESOURCE_NAME_CHECKER);
+        ////        else
+        ////            resourceManager.GetString(RESOURCE_NAME_CHECKER, currentCulture);
+        ////    }
+        ////    catch (MissingManifestResourceException)
+        ////    {
+        ////        resourceManager = new ResourceManager(resourceManagerType.FullName, resourceManagerType.Assembly);
+        ////    }
+        ////    catch (InvalidOperationException)
+        ////    {
+        ////        resourceManager = new ResourceManager(resourceManagerType.FullName, resourceManagerType.Assembly);
+        ////    }
 
-            return resourceManager;
-        }
+        ////    return resourceManager;
+        ////}
     }
 }

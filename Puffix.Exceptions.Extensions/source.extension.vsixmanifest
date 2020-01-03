@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Puffix.Exceptions.cc699b35-f135-4d70-8628-9680326cc4da" Version="1.0" Language="en-US" Publisher="Puffix - Romain Ehret" />
+        <Identity Id="Puffix.Exceptions.cc699b35-f135-4d70-8628-9680326cc4da" Version="1.0" Language="en-US" Publisher="Puffix.io" />
         <DisplayName>Puffix Exceptions</DisplayName>
         <Description xml:space="preserve">This extension provides the item template and two snippets to automate code generation for exception management in your code. It is bases on the Nuget Package Puffix.Exceptions.</Description>
+        <MoreInfo>https://github.com/EhRom/Puffix.Exceptions</MoreInfo>
         <Icon>icon.png</Icon>
-        <Tags>Execptions Exception Puffix</Tags>
-        <Preview>true</Preview>
+        <Tags>Execptions Exception Management Puffix</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />

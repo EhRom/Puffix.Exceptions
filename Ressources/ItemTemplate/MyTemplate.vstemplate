@@ -11,7 +11,7 @@
   <TemplateContent>
     <References>
       <Reference>
-        <Assembly>Puffix.Exceptions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e21a39e7bc8b54d6</Assembly>
+        <Assembly>Puffix.Exceptions</Assembly>
       </Reference>
     </References>
     <ProjectItem SubType="Code" TargetFileName="$fileinputname$Exceptions.cs" ReplaceParameters="true">PuffixExceptions.cs</ProjectItem>

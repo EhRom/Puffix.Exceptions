@@ -167,5 +167,113 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         #endregion
     }
 
-    // Add your exceptions here. You can use PuffixExcepetion and PuffixInnerException code snippets.
+    /// <summary>
+    /// Error sample with invalid pattern.
+    /// </summary>
+    [Serializable]
+    public sealed class InvalidPatternException : SampleExceptions
+    {
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public InvalidPatternException()
+            : base(typeof(InvalidPatternException))
+        { }
+
+        #region Exception serialization.
+
+        /// <summary>
+        /// Constructor for the serialization (DO NOT MODIFY).
+        /// </summary>
+        /// <param name="info">Serialization information.</param>
+        /// <param name="context">Context.</param>
+        public InvalidPatternException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Outer error sample with invalid pattern.
+    /// </summary>
+    [Serializable]
+    public sealed class InvalidPatternOuterException : SampleExceptions
+    {
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+		/// <param name="innerException">Inner error.</param>
+        public InvalidPatternOuterException(Exception innerException)
+            : base(typeof(InvalidPatternOuterException), innerException)
+        { }
+
+        #region Exception serialization.
+
+        /// <summary>
+        /// Constructor for the serialization (DO NOT MODIFY).
+        /// </summary>
+        /// <param name="info">Serialization information.</param>
+        /// <param name="context">Context.</param>
+        public InvalidPatternOuterException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Error sample with missing parameter.
+    /// </summary>
+    [Serializable]
+    public sealed class MissingParameterException : SampleExceptions
+    {
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public MissingParameterException(string expectedValue)
+            : base(typeof(MissingParameterException), expectedValue)
+        { }
+
+        #region Exception serialization.
+
+        /// <summary>
+        /// Constructor for the serialization (DO NOT MODIFY).
+        /// </summary>
+        /// <param name="info">Serialization information.</param>
+        /// <param name="context">Context.</param>
+        public MissingParameterException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Outer error sample with missing parameter.
+    /// </summary>
+    [Serializable]
+    public sealed class MissingParameterOuterException : SampleExceptions
+    {
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+		/// <param name="innerException">Inner error.</param>
+        public MissingParameterOuterException(Exception innerException, string expectedValue)
+            : base(typeof(MissingParameterOuterException), innerException, expectedValue)
+        { }
+
+        #region Exception serialization.
+
+        /// <summary>
+        /// Constructor for the serialization (DO NOT MODIFY).
+        /// </summary>
+        /// <param name="info">Serialization information.</param>
+        /// <param name="context">Context.</param>
+        public MissingParameterOuterException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+        #endregion
+    }
 }

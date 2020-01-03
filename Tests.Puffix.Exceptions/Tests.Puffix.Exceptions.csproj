@@ -24,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Samples\NoResourceSampleExceptions.cs">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Compile>
     <Compile Update="Samples\SampleExceptions.cs">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </Compile>

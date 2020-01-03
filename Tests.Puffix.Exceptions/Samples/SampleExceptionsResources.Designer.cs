@@ -70,11 +70,47 @@ namespace Tests.Puffix.Exceptions.Samples {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided value (&apos;{0&apos;) is not valid..
+        /// </summary>
+        public static string InvalidPatternException {
+            get {
+                return ResourceManager.GetString("InvalidPatternException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value (&apos;{0&apos;) is not valid..
+        /// </summary>
+        public static string InvalidPatternOuterException {
+            get {
+                return ResourceManager.GetString("InvalidPatternOuterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided value (&apos;{0}&apos;) is not the one expected (&apos;{1}&apos;)..
         /// </summary>
         public static string InvalidValueException {
             get {
                 return ResourceManager.GetString("InvalidValueException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value (&apos;{0}&apos;) is not the one expected (&apos;{1}&apos;)..
+        /// </summary>
+        public static string MissingParameterException {
+            get {
+                return ResourceManager.GetString("MissingParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value (&apos;{0}&apos;) is not the one expected (&apos;{1}&apos;)..
+        /// </summary>
+        public static string MissingParameterOuterException {
+            get {
+                return ResourceManager.GetString("MissingParameterOuterException", resourceCulture);
             }
         }
     }
