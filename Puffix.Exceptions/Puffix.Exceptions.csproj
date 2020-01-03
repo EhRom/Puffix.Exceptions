@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Description>Manage and organize your exceptions with a base class. The base class provides mechanisms for automatic logs.</Description>
-    <Company>Puffix - Romain Ehret</Company>
+    <Company>Puffix.io - Romain Ehret</Company>
     <Copyright>Copyright 2020 (c) Puffix / Romain Ehret. All rights reserved.</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>Exceptions .Net Core</PackageProjectUrl>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Key.pfx</AssemblyOriginatorKeyFile>
-    <Authors>Puffix - Romain Ehret</Authors>
+    <Authors>Puffix.io - Romain Ehret</Authors>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -18,7 +18,21 @@
     <RepositoryUrl>https://github.com/EhRom/Puffix.Exceptions</RepositoryUrl>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>Execptions Exception Management Puffix</PackageTags>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>Licence.txt</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Licence.txt" />
+    <None Include="Licence.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Licence.txt" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="BaseExceptionResources.Designer.cs">

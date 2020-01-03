@@ -5,6 +5,7 @@
         <DisplayName>Puffix Exceptions</DisplayName>
         <Description xml:space="preserve">This extension provides the item template and two snippets to automate code generation for exception management in your code. It is bases on the Nuget Package Puffix.Exceptions.</Description>
         <MoreInfo>https://github.com/EhRom/Puffix.Exceptions</MoreInfo>
+        <License>Licence.txt</License>
         <Icon>icon.png</Icon>
         <Tags>Execptions Exception Management Puffix</Tags>
     </Metadata>
