@@ -20,6 +20,7 @@
     <PackageTags>Execptions Exception Management Puffix</PackageTags>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>Licence.txt</PackageLicenseFile>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
