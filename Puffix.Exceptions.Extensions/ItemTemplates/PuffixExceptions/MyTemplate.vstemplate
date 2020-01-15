@@ -1,0 +1,28 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+  <TemplateData>
+    <DefaultName>ClassName.cs</DefaultName>
+    <Name>PuffixExceptions</Name>
+    <Description>Template to create exception classes from the template Puffix.Exeptions. WARNING: the sufix Exceptions is automatically added to the file name (ex: if you specify ClassName.cs, the file ClassNameExceptions.cs is created).</Description>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>19</SortOrder>
+    <Author>Puffix - Romain Ehret</Author>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>Puffix.Exceptions</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem SubType="Code" TargetFileName="$fileinputname$Exceptions.cs" ReplaceParameters="true">PuffixExceptions.cs</ProjectItem>
+    <ProjectItem TargetFileName="$fileinputname$ExceptionsResources.resx" ReplaceParameters="true">PuffixExceptionsResources.resx</ProjectItem>
+    <CustomParameters>
+      <CustomParameter Name="$itemproperties$" Value="CustomTool" />
+      <CustomParameter Name="$CustomTool$" Value="PublicResXFileCodeGenerator" />
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Microsoft.VisualStudio.Editors, Version=14.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>Microsoft.VisualStudio.Editors.ResourceEditor.ResxItemWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>
