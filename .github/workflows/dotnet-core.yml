@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore Build.Puffix.Exceptions.sln 
     - name: Build
       run: dotnet build Build.Puffix.Exceptions.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test Build.Puffix.Exceptions.sln --no-restore --verbosity normal
