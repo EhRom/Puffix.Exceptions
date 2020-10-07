@@ -23,5 +23,7 @@ jobs:
       run: dotnet build Build.Puffix.Exceptions.sln --configuration Release --no-restore
     - name: Test
       run: dotnet test Build.Puffix.Exceptions.sln --no-restore --verbosity normal
-    - name: Publish Nuget Package
+    - name: Publish Nuget Package on Nuget
       run: dotnet nuget push /home/runner/work/Puffix.Exceptions/Puffix.Exceptions/Puffix.Exceptions/bin/Release/Puffix.Exceptions.1.1.0.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+    - name: Publish Nuget Package on Github
+      run: dotnet nuget push /home/runner/work/Puffix.Exceptions/Puffix.Exceptions/Puffix.Exceptions/bin/Release/Puffix.Exceptions.1.1.0.nupkg --source "github" --skip-duplicate
