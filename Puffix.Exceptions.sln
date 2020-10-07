@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffix.Exceptions.Extensions", "Puffix.Exceptions.Extensions\Puffix.Exceptions.Extensions.csproj", "{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GithubBuild", "GithubBuild", "{F4CB002A-277F-48B0-8E6A-411C21BB77DF}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
