@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <Description>Manage and organize your exceptions with a base class. The base class provides mechanisms for automatic logs.</Description>
     <Company>Puffix.io - Romain Ehret</Company>
     <Copyright>Copyright 2020 (c) Puffix / Romain Ehret. All rights reserved.</Copyright>
@@ -12,15 +12,23 @@
     <Authors>Puffix.io - Romain Ehret</Authors>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
     <RepositoryUrl>https://github.com/EhRom/Puffix.Exceptions</RepositoryUrl>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>Execptions Exception Management Puffix</PackageTags>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>Licence.txt</PackageLicenseFile>
     <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
