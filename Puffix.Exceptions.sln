@@ -7,12 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Puffix.Exceptions", "Puffix
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Puffix.Exceptions", "Tests.Puffix.Exceptions\Tests.Puffix.Exceptions.csproj", "{9347FC20-3AC4-48DB-86A4-249951894DF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffix.Exceptions.Extensions", "Puffix.Exceptions.Extensions\Puffix.Exceptions.Extensions.csproj", "{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GithubBuild", "GithubBuild", "{F4CB002A-277F-48B0-8E6A-411C21BB77DF}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffix.Exceptions.Extensions", "Puffix.Exceptions.Extensions\Puffix.Exceptions.Extensions.csproj", "{CBAD5702-070C-4761-9107-F3D72C0E613C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,14 +38,14 @@ Global
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|x86.ActiveCfg = Release|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|x86.Build.0 = Release|Any CPU
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Debug|x86.ActiveCfg = Debug|x86
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Debug|x86.Build.0 = Debug|x86
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Release|x86.ActiveCfg = Release|x86
-		{40E014B5-4674-463A-B4F4-90CE7EA9BCA7}.Release|x86.Build.0 = Release|x86
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|x86.ActiveCfg = Debug|x86
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|x86.Build.0 = Debug|x86
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|x86.ActiveCfg = Release|x86
+		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
