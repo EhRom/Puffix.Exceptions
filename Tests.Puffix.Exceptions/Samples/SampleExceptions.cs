@@ -1,7 +1,6 @@
 ﻿using Puffix.Exceptions;
 using Puffix.Exceptions.Basic;
 using System;
-using System.Runtime.Serialization;
 
 namespace Tests.Puffix.Exceptions.Samples
 {
@@ -37,19 +36,6 @@ namespace Tests.Puffix.Exceptions.Samples
         protected SampleExceptions(Type exceptionType, Exception innerException, params object[] messageParams)
             : base(typeof(SampleExceptionsResources), exceptionType, log, innerException, messageParams)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        protected SampleExceptions(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 }
 
@@ -69,19 +55,6 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public InvalidValueException(string providedValue, string expectedValue)
             : base(typeof(InvalidValueException), providedValue, expectedValue)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public InvalidValueException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -97,19 +70,6 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public CheckProvidedValueException(Exception innerException, string providedValue)
             : base(typeof(CheckProvidedValueException), innerException, providedValue)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public CheckProvidedValueException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -124,19 +84,6 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public NoMessageSampleException()
             : base(typeof(NoMessageSampleException))
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public NoMessageSampleException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -152,19 +99,6 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public NoMessageSampleOuterException(Exception innerException)
             : base(typeof(NoMessageSampleOuterException), innerException)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public NoMessageSampleOuterException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -179,19 +113,6 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public InvalidPatternException()
             : base(typeof(InvalidPatternException))
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public InvalidPatternException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -207,19 +128,6 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public InvalidPatternOuterException(Exception innerException)
             : base(typeof(InvalidPatternOuterException), innerException)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public InvalidPatternOuterException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -234,19 +142,6 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public MissingParameterException(string expectedValue)
             : base(typeof(MissingParameterException), expectedValue)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public MissingParameterException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -262,18 +157,5 @@ namespace Tests.Puffix.Exceptions.Samples.Sample
         public MissingParameterOuterException(Exception innerException, string expectedValue)
             : base(typeof(MissingParameterOuterException), innerException, expectedValue)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public MissingParameterOuterException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 }

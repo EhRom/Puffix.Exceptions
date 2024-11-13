@@ -1,7 +1,6 @@
 ﻿using Puffix.Exceptions;
 using Puffix.Exceptions.Basic;
 using System;
-using System.Runtime.Serialization;
 
 namespace Tests.Puffix.Exceptions.Samples
 {
@@ -37,19 +36,6 @@ namespace Tests.Puffix.Exceptions.Samples
         protected NoResourceSampleExceptions(Type exceptionType, Exception innerException, params object[] messageParams)
             : base(typeof(NoResourceSampleExceptionsResources), exceptionType, log, innerException, messageParams)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        protected NoResourceSampleExceptions(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -72,19 +58,6 @@ namespace Tests.Puffix.Exceptions.Samples.NoResourceSample
         public NoResourceException()
             : base(typeof(NoResourceException))
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public NoResourceException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 
     /// <summary>
@@ -100,18 +73,5 @@ namespace Tests.Puffix.Exceptions.Samples.NoResourceSample
         public NoResourceOuterException(Exception innerException)
             : base(typeof(NoResourceOuterException), innerException)
         { }
-
-        #region Exception serialization.
-
-        /// <summary>
-        /// Constructor for the serialization (DO NOT MODIFY).
-        /// </summary>
-        /// <param name="info">Serialization information.</param>
-        /// <param name="context">Context.</param>
-        public NoResourceOuterException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        { }
-
-        #endregion
     }
 }
