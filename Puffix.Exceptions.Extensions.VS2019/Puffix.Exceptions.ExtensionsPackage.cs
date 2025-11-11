@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.Shell;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
 namespace Puffix.Exceptions.Extensions
@@ -24,13 +24,13 @@ namespace Puffix.Exceptions.Extensions
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(Puffix.Exceptions.ExtensionsPackage.PackageGuidString)]
-    public sealed class Puffix.Exceptions.ExtensionsPackage : AsyncPackage
+    [Guid(PuffixExceptionsExtensionsPackage.PackageGuidString)]
+    public sealed class PuffixExceptionsExtensionsPackage : AsyncPackage
     {
-         /// <summary>
+        /// <summary>
         /// Puffix.Exceptions.ExtensionsPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "a2e23119-0853-4cc6-a75d-15defc2403f5";
+        public const string PackageGuidString = "25091d3e-f4d2-42b3-b7e1-78ba5907e1aa";
 
         #region Package Members
 

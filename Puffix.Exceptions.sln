@@ -12,40 +12,54 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GithubBuild", "GithubBuild"
 		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffix.Exceptions.Extensions", "Puffix.Exceptions.Extensions\Puffix.Exceptions.Extensions.csproj", "{CBAD5702-070C-4761-9107-F3D72C0E613C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffix.Exceptions.Extensions", "Puffix.Exceptions.Extensions\Puffix.Exceptions.Extensions.csproj", "{799CAA97-A620-4B3A-B015-24B683A2502A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|arm64 = Debug|arm64
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|arm64 = Release|arm64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Debug|arm64.Build.0 = Debug|Any CPU
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Debug|x86.Build.0 = Debug|Any CPU
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Release|arm64.ActiveCfg = Release|Any CPU
+		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Release|arm64.Build.0 = Release|Any CPU
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Release|x86.ActiveCfg = Release|Any CPU
 		{D5C605A1-1D32-46EF-8617-859B6CB71D18}.Release|x86.Build.0 = Release|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Debug|arm64.Build.0 = Debug|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Debug|x86.Build.0 = Debug|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|arm64.ActiveCfg = Release|Any CPU
+		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|arm64.Build.0 = Release|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|x86.ActiveCfg = Release|Any CPU
 		{9347FC20-3AC4-48DB-86A4-249951894DF9}.Release|x86.Build.0 = Release|Any CPU
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|x86.ActiveCfg = Debug|x86
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Debug|x86.Build.0 = Debug|x86
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|x86.ActiveCfg = Release|x86
-		{CBAD5702-070C-4761-9107-F3D72C0E613C}.Release|x86.Build.0 = Release|x86
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Debug|arm64.ActiveCfg = Debug|arm64
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Debug|arm64.Build.0 = Debug|arm64
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Debug|x86.ActiveCfg = Debug|x86
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Debug|x86.Build.0 = Debug|x86
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Release|arm64.ActiveCfg = Release|arm64
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Release|arm64.Build.0 = Release|arm64
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Release|x86.ActiveCfg = Release|x86
+		{799CAA97-A620-4B3A-B015-24B683A2502A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

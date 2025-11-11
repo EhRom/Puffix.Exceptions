@@ -10,7 +10,6 @@ namespace Puffix.Exceptions;
 /// </summary>
 /// <remarks>This class is extended i your own code. This class loads automatically the error message pattern from the full exception class name, and build the error message
 /// with the provided parameters. Error message patterns are stored in en embedded resource file (RexX file).</remarks>
-[Serializable]
 public abstract class BaseException : ApplicationException
 {
     /// <summary>
@@ -162,39 +161,4 @@ public abstract class BaseException : ApplicationException
 
         return resourceValue;
     }
-
-    /////// <summary>
-    /////// Load the resource manager containing the customized error message.
-    /////// </summary>
-    /////// <param name="resourceManagerType">Resource Manager type.</param>
-    /////// <param name="currentCulture">Current culture.</param>
-    /////// <returns>Reousrce manager containing error message pattenrs.</returns>
-    ////private static ResourceManager LoadExceptionResourceManager(Type resourceManagerType, CultureInfo currentCulture)
-    ////{
-    ////    // HACK: the resource manager is directly instanciated to keep control on the complete name of the base type. For files associated with exception classes container, the 
-    ////    // HACK : Instanciation d'un Resource Manager pour contrôler le nom complet du type de base. Pour les fichiers associés aux 
-    ////    // classes d'exception il faut suffixer le nom par Base (nom du type de l'exception de base), sinon les ressources ne sont pas 
-    ////    // accessibles. Comme les ressources peuvent être externalisées dans un autre fichier, non associé à la classe d'exception de base, 
-    ////    // on garde la possibilité d'instancier un Resource Manager sans le suffixer par base (dans les blocs 'catch').
-    ////    ResourceManager resourceManager;
-    ////    try
-    ////    {
-    ////        string resourceManagerTypeName = resourceManagerType.FullName;
-    ////        resourceManager = new ResourceManager(resourceManagerTypeName, resourceManagerType.Assembly);
-    ////        if (currentCulture == null)
-    ////            resourceManager.GetString(RESOURCE_NAME_CHECKER);
-    ////        else
-    ////            resourceManager.GetString(RESOURCE_NAME_CHECKER, currentCulture);
-    ////    }
-    ////    catch (MissingManifestResourceException)
-    ////    {
-    ////        resourceManager = new ResourceManager(resourceManagerType.FullName, resourceManagerType.Assembly);
-    ////    }
-    ////    catch (InvalidOperationException)
-    ////    {
-    ////        resourceManager = new ResourceManager(resourceManagerType.FullName, resourceManagerType.Assembly);
-    ////    }
-
-    ////    return resourceManager;
-    ////}
 }

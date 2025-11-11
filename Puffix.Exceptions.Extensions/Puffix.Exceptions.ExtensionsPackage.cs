@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Shell;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
 namespace Puffix.Exceptions.Extensions
@@ -24,13 +24,13 @@ namespace Puffix.Exceptions.Extensions
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(PuffixExceptionsExtensionsPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     public sealed class PuffixExceptionsExtensionsPackage : AsyncPackage
     {
         /// <summary>
         /// Puffix.Exceptions.ExtensionsPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "25091d3e-f4d2-42b3-b7e1-78ba5907e1aa";
+        public const string PackageGuidString = "5501fc88-9a62-411d-8955-c8d45506c9de";
 
         #region Package Members
 
@@ -45,7 +45,7 @@ namespace Puffix.Exceptions.Extensions
         {
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
-            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
         }
 
         #endregion
