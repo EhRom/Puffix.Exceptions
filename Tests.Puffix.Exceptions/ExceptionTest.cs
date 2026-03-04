@@ -1,26 +1,29 @@
+using NUnit.Framework;
 using Tests.Puffix.Exceptions.Samples.NoResourceSample;
 using Tests.Puffix.Exceptions.Samples.Sample;
-using Xunit;
 
 namespace Tests.Puffix.Exceptions;
 
 public class ExceptionTest
 {
-    [Fact]
+    [Test]
     public void TestBasicExceptionGeneration()
     {
         const string expectedErrorMessage = "The provided value ('Provided') is not the one expected ('Expected').";
         const string expectedValue = "Expected";
         const string providedValue = "Provided";
 
-        var error = new InvalidValueException(providedValue, expectedValue);
+        InvalidValueException error = new InvalidValueException(providedValue, expectedValue);
 
-        Assert.NotNull(error);
-        Assert.Null(error.InnerException);
-        Assert.Equal(expectedErrorMessage, error.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(error, Is.Not.Null);
+            Assert.That(error.InnerException, Is.Null);
+            Assert.That(error.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestOuterExceptionGeneration()
     {
         const string expectedErrorMessage = "The provided value ('Provided') is not the one expected ('Expected').";
@@ -28,118 +31,144 @@ public class ExceptionTest
         const string expectedValue = "Expected";
         const string providedValue = "Provided";
 
-        var error = new InvalidValueException(providedValue, expectedValue);
+        InvalidValueException error = new InvalidValueException(providedValue, expectedValue);
+        CheckProvidedValueException outerError = new CheckProvidedValueException(error, providedValue);
 
-        var outerError = new CheckProvidedValueException(error, providedValue);
-
-        Assert.NotNull(outerError);
-        Assert.NotNull(outerError.InnerException);
-        Assert.Equal(expectedOuterErrorMessage, outerError.Message);
-        Assert.Equal(expectedErrorMessage, outerError.InnerException.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(outerError, Is.Not.Null);
+            Assert.That(outerError.InnerException, Is.Not.Null);
+            Assert.That(outerError.Message, Is.EqualTo(expectedOuterErrorMessage));
+            Assert.That(outerError.InnerException.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestExceptionWithNoMessage()
     {
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : Message unavailable. Exception type: Tests.Puffix.Exceptions.Samples.Sample.NoMessageSampleException.";
 
-        var error = new NoMessageSampleException();
+        NoMessageSampleException error = new NoMessageSampleException();
 
-        Assert.NotNull(error);
-        Assert.Equal(expectedErrorMessage, error.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(error, Is.Not.Null);
+            Assert.That(error.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestOuterExceptionWithNoMessage()
     {
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : Message unavailable. Exception type: Tests.Puffix.Exceptions.Samples.Sample.NoMessageSampleException.";
         const string expectedOuterErrorMessage = "FATAL - Puffix.Exceptions : Message unavailable. Exception type: Tests.Puffix.Exceptions.Samples.Sample.NoMessageSampleOuterException.";
 
-        var error = new NoMessageSampleException();
-        var outerError = new NoMessageSampleOuterException(error);
+        NoMessageSampleException error = new NoMessageSampleException();
+        NoMessageSampleOuterException outerError = new NoMessageSampleOuterException(error);
 
-        Assert.NotNull(outerError);
-        Assert.NotNull(outerError.InnerException);
-        Assert.Equal(expectedOuterErrorMessage, outerError.Message);
-        Assert.Equal(expectedErrorMessage, outerError.InnerException.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(outerError, Is.Not.Null);
+            Assert.That(outerError.InnerException, Is.Not.Null);
+            Assert.That(outerError.Message, Is.EqualTo(expectedOuterErrorMessage));
+            Assert.That(outerError.InnerException.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestExceptionWithInvalidPattern()
     {
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: Tests.Puffix.Exceptions.Samples.Sample.InvalidPatternException. Pattern: The provided value ('{0') is not valid..";
 
-        var error = new InvalidPatternException();
+        InvalidPatternException error = new InvalidPatternException();
 
-        Assert.NotNull(error);
-        Assert.Equal(expectedErrorMessage, error.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(error, Is.Not.Null);
+            Assert.That(error.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestOuterExceptionWithInvalidPattern()
     {
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: Tests.Puffix.Exceptions.Samples.Sample.InvalidPatternException. Pattern: The provided value ('{0') is not valid..";
         const string expectedOuterErrorMessage = "FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: Tests.Puffix.Exceptions.Samples.Sample.InvalidPatternOuterException. Pattern: The provided value ('{0') is not valid..";
 
-        var error = new InvalidPatternException();
-        var outerError = new InvalidPatternOuterException(error);
+        InvalidPatternException error = new InvalidPatternException();
+        InvalidPatternOuterException outerError = new InvalidPatternOuterException(error);
 
-        Assert.NotNull(outerError);
-        Assert.NotNull(outerError.InnerException);
-        Assert.Equal(expectedOuterErrorMessage, outerError.Message);
-        Assert.Equal(expectedErrorMessage, outerError.InnerException.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(outerError, Is.Not.Null);
+            Assert.That(outerError.InnerException, Is.Not.Null);
+            Assert.That(outerError.Message, Is.EqualTo(expectedOuterErrorMessage));
+            Assert.That(outerError.InnerException.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestExceptionWithMissingParameter()
     {
         const string expectedValue = "Expected";
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: Tests.Puffix.Exceptions.Samples.Sample.MissingParameterException. Pattern: The provided value ('{0}') is not the one expected ('{1}')..";
 
-        var error = new MissingParameterException(expectedValue);
+        MissingParameterException error = new MissingParameterException(expectedValue);
 
-        Assert.NotNull(error);
-        Assert.Equal(expectedErrorMessage, error.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(error, Is.Not.Null);
+            Assert.That(error.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestOuterExceptionWithMissingParameter()
     {
         const string expectedValue = "Expected";
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: Tests.Puffix.Exceptions.Samples.Sample.MissingParameterException. Pattern: The provided value ('{0}') is not the one expected ('{1}')..";
         const string expectedOuterErrorMessage = "FATAL - Puffix.Exceptions : Message is not valid and can not be formatted. Exception type: Tests.Puffix.Exceptions.Samples.Sample.MissingParameterOuterException. Pattern: The provided value ('{0}') is not the one expected ('{1}')..";
 
-        var error = new MissingParameterException(expectedValue);
-        var outerError = new MissingParameterOuterException(error, expectedValue);
+        MissingParameterException error = new MissingParameterException(expectedValue);
+        MissingParameterOuterException outerError = new MissingParameterOuterException(error, expectedValue);
 
-        Assert.NotNull(outerError);
-        Assert.NotNull(outerError.InnerException);
-        Assert.Equal(expectedOuterErrorMessage, outerError.Message);
-        Assert.Equal(expectedErrorMessage, outerError.InnerException.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(outerError, Is.Not.Null);
+            Assert.That(outerError.InnerException, Is.Not.Null);
+            Assert.That(outerError.Message, Is.EqualTo(expectedOuterErrorMessage));
+            Assert.That(outerError.InnerException.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestExceptionWithCorruptedResourceFile()
     {
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : The resource manager 'Tests.Puffix.Exceptions.Samples.NoResourceSampleExceptionsResources' has not been found.";
 
-        var error = new NoResourceException();
+        NoResourceException error = new NoResourceException();
 
-        Assert.NotNull(error);
-        Assert.Equal(expectedErrorMessage, error.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(error, Is.Not.Null);
+            Assert.That(error.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 
-    [Fact]
+    [Test]
     public void TestOuterExceptionWithCorruptedResourceFile()
     {
         const string expectedErrorMessage = "FATAL - Puffix.Exceptions : The resource manager 'Tests.Puffix.Exceptions.Samples.NoResourceSampleExceptionsResources' has not been found.";
 
-        var error = new NoResourceException();
-        var outerError = new NoResourceOuterException(error);
+        NoResourceException error = new NoResourceException();
+        NoResourceOuterException outerError = new NoResourceOuterException(error);
 
-        Assert.NotNull(outerError);
-        Assert.NotNull(outerError.InnerException);
-        Assert.Equal(expectedErrorMessage, outerError.Message);
-        Assert.Equal(expectedErrorMessage, outerError.InnerException.Message);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(outerError, Is.Not.Null);
+            Assert.That(outerError.InnerException, Is.Not.Null);
+            Assert.That(outerError.Message, Is.EqualTo(expectedErrorMessage));
+            Assert.That(outerError.InnerException.Message, Is.EqualTo(expectedErrorMessage));
+        }
     }
 }
