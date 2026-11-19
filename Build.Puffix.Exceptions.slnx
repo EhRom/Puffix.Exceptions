@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/GithubBuild/">
+    <File Path=".github/workflows/codeql-analysis.yml" />
+    <File Path=".github/workflows/dotnet-core.yml" />
+  </Folder>
+  <Project Path="Puffix.Exceptions/Puffix.Exceptions.csproj" />
+  <Project Path="Tests.Puffix.Exceptions/Tests.Puffix.Exceptions.csproj" />
+</Solution>
