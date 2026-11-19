@@ -42,15 +42,15 @@ jobs:
 
     - name: Install dependencies
       id: dotnet-restore
-      run: dotnet restore Build.Puffix.Exceptions.sln
+      run: dotnet restore Build.Puffix.Exceptions.slnx
 
     - name: Build
       id: dotnet-build
-      run: dotnet build Build.Puffix.Exceptions.sln --configuration Release --no-restore
+      run: dotnet build Build.Puffix.Exceptions.slnx --configuration Release --no-restore
 
     - name: Test
       id: dotnet-test
-      run: dotnet test Build.Puffix.Exceptions.sln --no-restore --verbosity normal
+      run: dotnet test Build.Puffix.Exceptions.slnx --no-restore --verbosity normal
 
     - name: Publish Nuget Package
       id: dotnet-nuget-push
