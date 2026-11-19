@@ -5,7 +5,7 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/GithubBuild/">
-    <File Path=".github/workflows/dotnet-core.yml" />
+    <File Path=".github/workflows/main.yml" />
   </Folder>
   <Project Path="Puffix.Exceptions.Extensions/Puffix.Exceptions.Extensions.csproj">
     <Platform Solution="*|arm64" Project="arm64" />
